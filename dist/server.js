@@ -21,7 +21,7 @@ require("source-map-support").install();
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9fc85d6bda748b3a6041"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "aed93e0de0309740490b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -830,7 +830,7 @@ if(true) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__restRouter__ = __webpack_require__("./src/api/restRouter.js");
-/* unused harmony reexport restRouter */
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__restRouter__["a"]; });
 
 
 /***/ }),
@@ -839,7 +839,7 @@ if(true) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export signin */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return signin; });
 /* unused harmony export decodeToken */
 /* unused harmony export getFreshUser */
 /* unused harmony export verifyUser */
@@ -1067,7 +1067,7 @@ var generateControllers = function generateControllers(model) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__playlist_restRouter__ = __webpack_require__("./src/api/resources/playlist/playlist.restRouter.js");
-/* unused harmony reexport namespace */
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__playlist_restRouter__["a"]; });
 
 
 /***/ }),
@@ -1081,7 +1081,7 @@ var generateControllers = function generateControllers(model) {
 
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_0__modules_query__["a" /* generateControllers */])(__WEBPACK_IMPORTED_MODULE_1__playlist_model__["a" /* Playlist */]));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0__modules_query__["a" /* generateControllers */])(__WEBPACK_IMPORTED_MODULE_1__playlist_model__["a" /* Playlist */]));
 
 /***/ }),
 
@@ -1107,7 +1107,7 @@ var Playlist = __WEBPACK_IMPORTED_MODULE_0_mongoose___default.a.model('playlist'
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export playlistRouter */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return playlistRouter; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__("express");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__playlist_controller__ = __webpack_require__("./src/api/resources/playlist/playlist.controller.js");
@@ -1116,6 +1116,12 @@ var Playlist = __WEBPACK_IMPORTED_MODULE_0_mongoose___default.a.model('playlist'
 
 var playlistRouter = __WEBPACK_IMPORTED_MODULE_0_express___default.a.Router();
 
+playlistRouter.param('id', __WEBPACK_IMPORTED_MODULE_1__playlist_controller__["a" /* default */].findByParam);
+
+playlistRouter.route('/').get(__WEBPACK_IMPORTED_MODULE_1__playlist_controller__["a" /* default */].getAll).post(__WEBPACK_IMPORTED_MODULE_1__playlist_controller__["a" /* default */].createOne);
+
+playlistRouter.route('/:id').get(__WEBPACK_IMPORTED_MODULE_1__playlist_controller__["a" /* default */].getOne).put(__WEBPACK_IMPORTED_MODULE_1__playlist_controller__["a" /* default */].updateOne).delete(__WEBPACK_IMPORTED_MODULE_1__playlist_controller__["a" /* default */].deleteOne);
+
 /***/ }),
 
 /***/ "./src/api/resources/song/index.js":
@@ -1123,7 +1129,7 @@ var playlistRouter = __WEBPACK_IMPORTED_MODULE_0_express___default.a.Router();
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__song_restRouter__ = __webpack_require__("./src/api/resources/song/song.restRouter.js");
-/* unused harmony reexport namespace */
+/* harmony namespace reexport (by used) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_0__song_restRouter__["a"]; });
 
 
 /***/ }),
@@ -1137,7 +1143,7 @@ var playlistRouter = __WEBPACK_IMPORTED_MODULE_0_express___default.a.Router();
 
 
 
-/* unused harmony default export */ var _unused_webpack_default_export = (Object(__WEBPACK_IMPORTED_MODULE_0__modules_query__["a" /* generateControllers */])(__WEBPACK_IMPORTED_MODULE_1__song_model__["a" /* Song */]));
+/* harmony default export */ __webpack_exports__["a"] = (Object(__WEBPACK_IMPORTED_MODULE_0__modules_query__["a" /* generateControllers */])(__WEBPACK_IMPORTED_MODULE_1__song_model__["a" /* Song */]));
 
 /***/ }),
 
@@ -1163,7 +1169,7 @@ var Song = __WEBPACK_IMPORTED_MODULE_0_mongoose___default.a.model('song', songSc
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export songRouter */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return songRouter; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__("express");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__song_controller__ = __webpack_require__("./src/api/resources/song/song.controller.js");
@@ -1171,6 +1177,12 @@ var Song = __WEBPACK_IMPORTED_MODULE_0_mongoose___default.a.model('song', songSc
 
 
 var songRouter = __WEBPACK_IMPORTED_MODULE_0_express___default.a.Router();
+
+songRouter.param('id', __WEBPACK_IMPORTED_MODULE_1__song_controller__["a" /* default */].findByParam);
+
+songRouter.route('/').get(__WEBPACK_IMPORTED_MODULE_1__song_controller__["a" /* default */].getAll).post(__WEBPACK_IMPORTED_MODULE_1__song_controller__["a" /* default */].createOne);
+
+songRouter.route('/:id').get(__WEBPACK_IMPORTED_MODULE_1__song_controller__["a" /* default */].getOne).put(__WEBPACK_IMPORTED_MODULE_1__song_controller__["a" /* default */].updateOne).delete(__WEBPACK_IMPORTED_MODULE_1__song_controller__["a" /* default */].deleteOne);
 
 /***/ }),
 
@@ -1246,7 +1258,7 @@ userRouter.param('id', __WEBPACK_IMPORTED_MODULE_1__user_controller__["a" /* def
 
 userRouter.route('/').get(__WEBPACK_IMPORTED_MODULE_1__user_controller__["a" /* default */].getAll).post(__WEBPACK_IMPORTED_MODULE_1__user_controller__["a" /* default */].createOne);
 
-userRouter.route('/:id').get(__WEBPACK_IMPORTED_MODULE_1__user_controller__["a" /* default */].getOne).put(__WEBPACK_IMPORTED_MODULE_1__user_controller__["a" /* default */].updateOne).delete(__WEBPACK_IMPORTED_MODULE_1__user_controller__["a" /* default */].createOne);
+userRouter.route('/:id').get(__WEBPACK_IMPORTED_MODULE_1__user_controller__["a" /* default */].getOne).put(__WEBPACK_IMPORTED_MODULE_1__user_controller__["a" /* default */].updateOne).delete(__WEBPACK_IMPORTED_MODULE_1__user_controller__["a" /* default */].deleteOne);
 
 /***/ }),
 
@@ -1254,7 +1266,7 @@ userRouter.route('/:id').get(__WEBPACK_IMPORTED_MODULE_1__user_controller__["a" 
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export restRouter */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return restRouter; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express__ = __webpack_require__("express");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_express___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_express__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__resources_user__ = __webpack_require__("./src/api/resources/user/index.js");
@@ -1268,6 +1280,8 @@ userRouter.route('/:id').get(__WEBPACK_IMPORTED_MODULE_1__user_controller__["a" 
 var restRouter = __WEBPACK_IMPORTED_MODULE_0_express___default.a.Router();
 
 restRouter.use('/user', __WEBPACK_IMPORTED_MODULE_1__resources_user__["a" /* userRouter */]);
+restRouter.use('/song', __WEBPACK_IMPORTED_MODULE_2__resources_song__["a" /* songRouter */]);
+restRouter.use('/playlist', __WEBPACK_IMPORTED_MODULE_3__resources_playlist__["a" /* playlistRouter */]);
 
 /***/ }),
 
@@ -1313,7 +1327,7 @@ __WEBPACK_IMPORTED_MODULE_0__server__["a" /* default */].listen(3000, function (
 
 var setGlobalMiddleware = function setGlobalMiddleware(app) {};
 
-/* unused harmony default export */ var _unused_webpack_default_export = (setGlobalMiddleware);
+/* harmony default export */ __webpack_exports__["a"] = (setGlobalMiddleware);
 
 /***/ }),
 
@@ -1335,7 +1349,13 @@ var setGlobalMiddleware = function setGlobalMiddleware(app) {};
 // Declare an app from express
 var app = __WEBPACK_IMPORTED_MODULE_0_express___default()();
 
-app.get('/', function (req, res) {
+Object(__WEBPACK_IMPORTED_MODULE_1__middleware__["a" /* default */])(app);
+// connect()
+
+app.use('/signin', __WEBPACK_IMPORTED_MODULE_4__api_modules_auth__["a" /* signin */]);
+app.use('/api', __WEBPACK_IMPORTED_MODULE_2__api__["a" /* restRouter */]);
+
+app.all('*', function (req, res) {
   res.json({ ok: true });
 });
 
