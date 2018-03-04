@@ -45,7 +45,12 @@ export const updateOne = model => async (req, res, next) => {
     .catch(error => next(error));
 };
 
-export const deleteOne = model => (req, res, next) => {};
+export const deleteOne = model => (req, res, next) => {
+  return controllers
+    .deleteOne(req.docFromId)
+    .then(doc => res.status(201).json(doc))
+    .catch(error => next(error));
+};
 
 export const getOne = model => (req, res, next) => {
   return controllers.getOne(res.body);
