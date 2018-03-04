@@ -53,7 +53,10 @@ export const deleteOne = model => (req, res, next) => {
 };
 
 export const getOne = model => (req, res, next) => {
-  return controllers.getOne(res.body);
+  return controllers
+    .getOne(req.docToUpdate)
+    .then(doc => res.status(200).json(doc))
+    .catch(error => next(error));
 };
 
 export const getAll = model => (req, res, next) => {};
