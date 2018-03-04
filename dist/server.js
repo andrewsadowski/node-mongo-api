@@ -21,7 +21,7 @@ require("source-map-support").install();
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4c4d795d6df95f4dbbb2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "774a577f83a659e0a99b"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -1018,10 +1018,20 @@ var createOne = function createOne(model) {
 var updateOne = function updateOne(model) {
   return function () {
     var _ref = __WEBPACK_IMPORTED_MODULE_2_babel_runtime_helpers_asyncToGenerator___default()( /*#__PURE__*/__WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default.a.mark(function _callee(req, res, next) {
+      var docToUpdate, update;
       return __WEBPACK_IMPORTED_MODULE_1_babel_runtime_regenerator___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
+              docToUpdate = req.docFromId;
+              update = req.body;
+              return _context.abrupt('return', controllers.updateOne(docToUpdate, update).then(function (doc) {
+                return res.status(201).json(doc);
+              }).catch(function (error) {
+                return next(error);
+              }));
+
+            case 3:
             case 'end':
               return _context.stop();
           }

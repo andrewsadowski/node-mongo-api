@@ -35,7 +35,15 @@ export const createOne = model => (req, res, next) => {
     .catch(error => next(error));
 };
 
-export const updateOne = model => async (req, res, next) => {};
+export const updateOne = model => async (req, res, next) => {
+  const docToUpdate = req.docFromId;
+  const update = req.body;
+
+  return controllers
+    .updateOne(docToUpdate, update)
+    .then(doc => res.status(201).json(doc))
+    .catch(error => next(error));
+};
 
 export const deleteOne = model => (req, res, next) => {};
 
