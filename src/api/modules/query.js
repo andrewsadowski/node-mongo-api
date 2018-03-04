@@ -59,7 +59,12 @@ export const getOne = model => (req, res, next) => {
     .catch(error => next(error));
 };
 
-export const getAll = model => (req, res, next) => {};
+export const getAll = model => (req, res, next) => {
+  return controllers
+    .getAll(model)
+    .then(doc => res.json(doc))
+    .catch(error => next(error));
+};
 
 export const findByParam = model => (req, res, next, id) => {};
 
