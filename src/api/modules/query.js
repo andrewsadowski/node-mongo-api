@@ -39,7 +39,9 @@ export const updateOne = model => async (req, res, next) => {};
 
 export const deleteOne = model => (req, res, next) => {};
 
-export const getOne = model => (req, res, next) => {};
+export const getOne = model => (req, res, next) => {
+  return controllers.getOne(res.body);
+};
 
 export const getAll = model => (req, res, next) => {};
 

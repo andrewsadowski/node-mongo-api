@@ -21,7 +21,7 @@ require("source-map-support").install();
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "aed93e0de0309740490b"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "9896247996bcd79237aa"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -981,10 +981,10 @@ var protect = [decodeToken(), getFreshUser()];
 var _this = this;
 
 
-var testData = { message: 'hello'
+var testData = { message: 'hello' };
 
-  // These are generic methods used in the generic controllers for all models
-};var controllers = {
+// These are generic methods used in the generic controllers for all models
+var controllers = {
   createOne: function createOne(model, body) {
     return __WEBPACK_IMPORTED_MODULE_3_babel_runtime_core_js_promise___default.a.resolve(testData);
   },
@@ -1006,7 +1006,13 @@ var testData = { message: 'hello'
 };
 
 var createOne = function createOne(model) {
-  return function (req, res, next) {};
+  return function (req, res, next) {
+    return controllers.createOne(model, req.body).then(function (result) {
+      return res.json(res);
+    }).catch(function (e) {
+      return res.status(500).send('Things are not looking good');
+    });
+  };
 };
 
 var updateOne = function updateOne(model) {
@@ -1034,7 +1040,9 @@ var deleteOne = function deleteOne(model) {
 };
 
 var getOne = function getOne(model) {
-  return function (req, res, next) {};
+  return function (req, res, next) {
+    return controllers.getOne(res.body);
+  };
 };
 
 var getAll = function getAll(model) {
