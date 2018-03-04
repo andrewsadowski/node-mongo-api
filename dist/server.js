@@ -21,7 +21,7 @@ require("source-map-support").install();
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "502c7c935031050f6b68"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "255f55e663b3daa2243c"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -1057,7 +1057,7 @@ var deleteOne = function deleteOne(model) {
 
 var getOne = function getOne(model) {
   return function (req, res, next) {
-    return controllers.getOne(req.docToUpdate).then(function (doc) {
+    return controllers.getOne(req.docFromId).then(function (doc) {
       return res.status(200).json(doc);
     }).catch(function (error) {
       return next(error);
@@ -1076,7 +1076,18 @@ var getAll = function getAll(model) {
 };
 
 var findByParam = function findByParam(model) {
-  return function (req, res, next, id) {};
+  return function (req, res, next, id) {
+    return controllers.findByParam(model, id).then(function (doc) {
+      if (!doc) {
+        next(new Error('Not Found Error'));
+      } else {
+        req.docFromId = doc;
+        next();
+      }
+    }).catch(function (error) {
+      next(error);
+    });
+  };
 };
 
 var generateControllers = function generateControllers(model) {

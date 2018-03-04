@@ -54,7 +54,7 @@ export const deleteOne = model => (req, res, next) => {
 
 export const getOne = model => (req, res, next) => {
   return controllers
-    .getOne(req.docToUpdate)
+    .getOne(req.docFromId)
     .then(doc => res.status(200).json(doc))
     .catch(error => next(error));
 };
@@ -66,7 +66,21 @@ export const getAll = model => (req, res, next) => {
     .catch(error => next(error));
 };
 
-export const findByParam = model => (req, res, next, id) => {};
+export const findByParam = model => (req, res, next, id) => {
+  return controllers
+    .findByParam(model, id)
+    .then(doc => {
+      if (!doc) {
+        next(new Error('Not Found Error'));
+      } else {
+        req.docFromId = doc;
+        next();
+      }
+    })
+    .catch(error => {
+      next(error);
+    });
+};
 
 export const generateControllers = (model, overrides = {}) => {
   const defaults = {
