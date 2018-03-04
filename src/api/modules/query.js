@@ -31,8 +31,8 @@ export const controllers = {
 export const createOne = model => (req, res, next) => {
   return controllers
     .createOne(model, req.body)
-    .then(result => res.json(res))
-    .catch(e => res.status(500).send('Things are not looking good'));
+    .then(doc => res.status(201).json(doc))
+    .catch(error => next(error));
 };
 
 export const updateOne = model => async (req, res, next) => {};

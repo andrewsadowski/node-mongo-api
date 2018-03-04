@@ -21,7 +21,7 @@ require("source-map-support").install();
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "9896247996bcd79237aa"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4c4d795d6df95f4dbbb2"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -1007,10 +1007,10 @@ var controllers = {
 
 var createOne = function createOne(model) {
   return function (req, res, next) {
-    return controllers.createOne(model, req.body).then(function (result) {
-      return res.json(res);
-    }).catch(function (e) {
-      return res.status(500).send('Things are not looking good');
+    return controllers.createOne(model, req.body).then(function (doc) {
+      return res.status(201).json(doc);
+    }).catch(function (error) {
+      return next(error);
     });
   };
 };
